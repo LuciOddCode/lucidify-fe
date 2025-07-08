@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --primary-blue: #4A90E2;
-  --secondary-blue: #A3BFFA;
-  --soft-teal: #26A69A;
-  --warm-gray: #E0E0E0;
-  --dark-navy: #1A237E;
+  --primary-sage: #7c9885;
+  --secondary-sage: #a4b8a8;
+  --soft-lavender: #b8a4c9;
+  --warm-cream: #f7f5f3;
+  --soft-white: #fefefe;
+  --gentle-gray: #8a8a8a;
+  --deep-forest: #2d3e2d;
+  --calm-blue: #6b9bd1;
+  --serene-teal: #5fa5a5;
+  --sunset-peach: #e8b4a0;
 }
 
 /* Apply custom variables to Tailwind classes */
@@ -15,9 +20,55 @@
   [class*="bg-"] {
     --tw-bg-opacity: 1;
   }
-  .bg-primary-blue { background-color: var(--primary-blue); }
-  .bg-secondary-blue { background-color: var(--secondary-blue); }
-  .bg-soft-teal { background-color: var(--soft-teal); }
-  .bg-warm-gray { background-color: var(--warm-gray); }
-  .text-dark-navy { color: var(--dark-navy); }
+  .bg-primary-sage {
+    background-color: var(--primary-sage);
+  }
+  .bg-secondary-sage {
+    background-color: var(--secondary-sage);
+  }
+  .bg-soft-lavender {
+    background-color: var(--soft-lavender);
+  }
+  .bg-warm-cream {
+    background-color: var(--warm-cream);
+  }
+  .bg-soft-white {
+    background-color: var(--soft-white);
+  }
+  .bg-calm-blue {
+    background-color: var(--calm-blue);
+  }
+  .bg-serene-teal {
+    background-color: var(--serene-teal);
+  }
+  .bg-sunset-peach {
+    background-color: var(--sunset-peach);
+  }
+  .text-deep-forest {
+    color: var(--deep-forest);
+  }
+  .text-gentle-gray {
+    color: var(--gentle-gray);
+  }
+  .text-primary-sage {
+    color: var(--primary-sage);
+  }
+
+  /* Smooth scrolling and improved typography */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* Focus styles for accessibility */
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--primary-sage);
+    outline-offset: 2px;
+  }
 }
