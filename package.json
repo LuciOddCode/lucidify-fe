@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -19,6 +19,9 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.58.1",
+    "react-hot-toast": "^2.4.1",
+    "recharts": "^2.12.7",
+    "zustand": "^4.5.5",
     "zod": "^3.25.67"
   },
   "devDependencies": {

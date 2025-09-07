@@ -47,8 +47,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       if (token) {
         try {
           const response = await authApi.verifyToken();
-          if (response.success && response.user) {
-            setUser(response.user);
+          if (response.success) {
+            // Handle both response formats
+            const user = response.user || response.data?.user;
+            if (user) {
+              setUser(user);
+            } else {
+              localStorage.removeItem("token");
+            }
           } else {
             localStorage.removeItem("token");
           }
@@ -78,10 +84,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const response = await authApi.login({ email, password });
 
-      if (response.success && response.user && response.token) {
-        localStorage.setItem("token", response.token);
-        setUser(response.user);
-        return { success: true, message: response.message };
+      if (response.success) {
+        // Handle both response formats
+        const user = response.user || response.data?.user;
+        const token = response.token || response.data?.token;
+        
+        if (user && token) {
+          localStorage.setItem("token", token);
+          setUser(user);
+          return { success: true, message: response.message };
+        } else {
+          return { success: false, message: "Invalid response format" };
+        }
       } else {
         return { success: false, message: response.message };
       }
@@ -118,10 +132,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       // This would typically open a popup or redirect to Google's OAuth flow
       const response = await authApi.googleAuth();
 
-      if (response.success && response.user && response.token) {
-        localStorage.setItem("token", response.token);
-        setUser(response.user);
-        return { success: true, message: response.message };
+      if (response.success) {
+        // Handle both response formats
+        const user = response.user || response.data?.user;
+        const token = response.token || response.data?.token;
+        
+        if (user && token) {
+          localStorage.setItem("token", token);
+          setUser(user);
+          return { success: true, message: response.message };
+        } else {
+          return { success: false, message: "Invalid response format" };
+        }
       } else {
         return {
           success: false,
